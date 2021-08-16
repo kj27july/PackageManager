@@ -1,10 +1,8 @@
 package com.example.packagemanager
 
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -13,9 +11,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-     val intent:Intent  = Intent(Intent.ACTION_DELETE)
-        intent.setData(Uri.parse("package:com.example.packagemanager"))
-        startActivity(intent)
+//        install
+        val intentInstall = Intent(Intent.ACTION_VIEW)
+        intentInstall.setDataAndType(apkUri, "application/vnd.android.package-archive")
+        startActivity(intentInstall)
+
+
+        //uninstall
+         val intentUnistall = Intent(Intent.ACTION_DELETE)
+        intentUnistall.setData(Uri.parse("package:com.example.packagemanager"))
+        startActivity(intentUnistall)
+
+
 
 //        val youtubeInstalled: Boolean = appInstalled("com.google.android.youtube")
 //        if (youtubeInstalled) {
